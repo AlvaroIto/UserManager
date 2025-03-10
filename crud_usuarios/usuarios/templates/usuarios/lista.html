@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuários</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <h1>Usuários</h1>
+    <a href="{% url 'criar_usuario' %}">Criar Novo Usuário</a>
+    <ul>
+        {% for usuario in usuarios %}
+            <li>{{ usuario.nome }} - {{ usuario.email }} - {{ usuario.idade}} anos
+                <a href="{% url 'editar_usuario' usuario.pk %}">Editar</a>
+                <a href="{% url 'deletar_usuario' usuario.pk %}">Deletar</a>
+            </li>
+        {% endfor %}
+    </ul>
+    
+</body>
+</html>
